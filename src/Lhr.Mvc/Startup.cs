@@ -100,13 +100,13 @@ namespace Lhr.Mvc
                 options.ViewLocationExpanders.Add(new LhrViewLocationExpander(serviceAppSettings));
             });
             // Init core
-            CoreMnager coreManager = new CoreMnager(serviceAppSettings.Value);
+            CoreManager coreManager = new CoreManager(serviceAppSettings.Value);
             // Apply Updates
             UpdateManager upm = new UpdateManager(coreManager);
-            UpdateVersion fromVersion = new UpdateVersion(coreManager.CoreGeneralSettingsManager.GetCurrentSystemVersion().Value);
+            UpdateVersion fromVersion = new UpdateVersion(coreManager.GeneralSettingsManager.GetCurrentSystemVersion().Value);
             upm.Update(fromVersion, new UpdateVersion(1, 0, 0));
             // Manage DI
-            DiProvider diProvider = new DiProvider(serviceAppSettings.Value, rootFileProvider, services, coreManager.CoreDIManager);
+            DiProvider diProvider = new DiProvider(serviceAppSettings.Value, rootFileProvider, services, coreManager.DiManager);
             diProvider.LoadLibraries();
             diProvider.RegisterDependencies();
         }

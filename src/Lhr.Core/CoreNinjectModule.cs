@@ -25,9 +25,9 @@ namespace Lhr.Core
             Bind<IDalDb>().To<SqlDalDb>();
             Bind<IDalDi>().To<SqlDalDi>();
             Bind<IDalGeneralSettings>().To<SqlDalGeneralSettings>();
-            Bind<IDbManager>().To<DbManager>();
-            Bind<IDiManager>().To<DiManager>();
-            Bind<IGeneralSettingsManager>().To<GeneralSettingsManager>();
+            Bind<IDbManager>().To<CoreDbManager>();
+            Bind<IDiManager>().To<CoreDiManager>();
+            Bind<IGeneralSettingsManager>().To<CoreGeneralSettingsManager>();
             //Type contract = null, implementation = null;
             //Bind(contract).To(implementation);
         }

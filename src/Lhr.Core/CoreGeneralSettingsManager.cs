@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Lhr.Core
 {
-    public class GeneralSettingsManager: IGeneralSettingsManager
+    public class CoreGeneralSettingsManager: IGeneralSettingsManager
     {
         IDalGeneralSettings dal;
         GeneralSetting currentSystemVersion;
-        public GeneralSettingsManager(IDalGeneralSettings dalGeneralSettings)
+        public CoreGeneralSettingsManager(IDalGeneralSettings dalGeneralSettings)
         {
             dal = dalGeneralSettings;
         }

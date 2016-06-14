@@ -9,8 +9,8 @@ namespace Lhr.Mvc.Services.Updates
 {
     public class UpdateManager
     {
-        public CoreMnager Core { get; set; }
-        public UpdateManager(CoreMnager coreManager)
+        public CoreManager Core { get; set; }
+        public UpdateManager(CoreManager coreManager)
         {
             Core = coreManager;
         }

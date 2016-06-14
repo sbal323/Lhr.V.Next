@@ -28,7 +28,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
         void IUpdate.ApplyChanges(UpdateManager manager)
         {
 			//Add tables
-            string tableName = TableNames.DISettings;
+            string tableName = TableNames.DiSettings;
             string sql = $@"CREATE TABLE {tableName}(
 					[Id] [uniqueidentifier] NOT NULL,
 					[ContractAssemblyName] [nvarchar](max) NOT NULL,
@@ -42,7 +42,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
 					(
 					[Id] ASC
 					))";
-            manager.Core.CoreDBBManager.CreateTable(tableName,sql);
+            manager.Core.DBBManager.CreateTable(tableName,sql);
             tableName = TableNames.GeneralSettings;
             sql = $@"CREATE TABLE {tableName}(
 					[Id] [uniqueidentifier] NOT NULL,
@@ -56,7 +56,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
 					(
 					[Id] ASC
 					))";
-            manager.Core.CoreDBBManager.CreateTable(tableName, sql);
+            manager.Core.DBBManager.CreateTable(tableName, sql);
             //Register DI Components
             DiSetting setting;
             setting = new DiSetting
@@ -70,7 +70,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
                 ImplementationTypeName = DiDefaultImplementation.DALEmployeeSQL,
                 ImplementationLibraryReferenceType = DiSetting.DiLibraryReferenceType.Dynamic
             };
-            manager.Core.CoreDIManager.AddSetting(setting);
+            manager.Core.DiManager.AddSetting(setting);
             setting = new DiSetting
             {
                 Id = DiSettingsGuids.IBlEmployee,
@@ -82,7 +82,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
                 ImplementationTypeName = DiDefaultImplementation.BLEmployeeBase,
                 ImplementationLibraryReferenceType = DiSetting.DiLibraryReferenceType.Dynamic
             };
-            manager.Core.CoreDIManager.AddSetting(setting);
+            manager.Core.DiManager.AddSetting(setting);
             setting = new DiSetting
             {
                 Id = DiSettingsGuids.IConnectionDetailsProvider,
@@ -94,7 +94,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
                 ImplementationTypeName = DiDefaultImplementation.SQLConnectionDetailsProvider,
                 ImplementationLibraryReferenceType = DiSetting.DiLibraryReferenceType.Dynamic
             };
-            manager.Core.CoreDIManager.AddSetting(setting);
+            manager.Core.DiManager.AddSetting(setting);
             setting = new DiSetting
             {
                 Id = DiSettingsGuids.IConnectionProvider,
@@ -106,7 +106,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
                 ImplementationTypeName = DiDefaultImplementation.SQLConnectionProvider,
                 ImplementationLibraryReferenceType = DiSetting.DiLibraryReferenceType.Dynamic
             };
-            manager.Core.CoreDIManager.AddSetting(setting);
+            manager.Core.DiManager.AddSetting(setting);
             //Add settings
             GeneralSetting gs = new GeneralSetting
             {
@@ -117,7 +117,7 @@ namespace Lhr.Mvc.Services.Updates.Updates
 				Custom = false,
 				Description = "Lanteria HR System version"				
             };
-            manager.Core.CoreGeneralSettingsManager.AddSetting(gs);
+            manager.Core.GeneralSettingsManager.AddSetting(gs);
         }
     }
 }

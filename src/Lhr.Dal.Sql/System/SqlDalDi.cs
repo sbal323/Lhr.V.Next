@@ -19,7 +19,7 @@ namespace Lhr.Dal.Sql.System
         {
             List<DiSetting> result;
             OrmManager orm = new OrmManager();
-            string commandSQL = $"SELECT * From {TableNames.DISettings}";
+            string commandSQL = $"SELECT * From {TableNames.DiSettings}";
             SqlCommand cmd = new SqlCommand(commandSQL);
             SqlDataReader rdr = ExecuteReader(cmd);
             result = orm.MapDataToBusinessEntityCollection<DiSetting>(rdr);
@@ -29,12 +29,12 @@ namespace Lhr.Dal.Sql.System
         void IDalDi.AddSetting(DiSetting setting)
         {
             OrmManager orm = new OrmManager();
-            string commandSQL = $"SELECT count(*) From {TableNames.DISettings} Where Id = @Id" ;
+            string commandSQL = $"SELECT count(*) From {TableNames.DiSettings} Where Id = @Id" ;
             SqlCommand cmd = new SqlCommand(commandSQL);
             cmd.Parameters.AddWithValue("@Id", setting.Id);
             if (!RecordExists(cmd))
             {
-                string commandSQLInsert = $@"INSERT INTO {TableNames.DISettings}
+                string commandSQLInsert = $@"INSERT INTO {TableNames.DiSettings}
                    ([Id]
                     ,[ContractAssemblyName]
                     ,[ContractTypeName]
