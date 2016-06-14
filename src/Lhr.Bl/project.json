@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "LHR.BL Class Library",
+  "authors": [ "bal" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx46": { }
+  },
+  "dependencies": {
+    "Lhr.Dal": "1.0.0-*",
+    "Lhr.Types": "1.0.0-*"
+  }
+}

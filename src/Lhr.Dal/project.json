@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "description": "LHR.DAL Class Library",
+  "authors": [ "bal" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx46": { }
+  },
+  "dependencies": {
+    "Lhr.Types": "1.0.0-*",
+    "System.Data.Common": "4.0.1-rc2-24027"
+  }
+}

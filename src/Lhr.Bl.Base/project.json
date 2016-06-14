@@ -1,0 +1,19 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Lhr.Bl.Base Class Library",
+  "authors": [ "bal" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx46": { }
+  },
+  "dependencies": {
+    "Lhr.Bl": "1.0.0-*",
+    "Lhr.Dal": "1.0.0-*",
+    "Lhr.Types": "1.0.0-*"
+  },
+  "scripts": {
+    "postbuild": "xcopy /E /Y \"%project:Directory%\\..\\..\\artifacts\\bin\\%project:Name%\\Debug\\dnx46\" \"%project:Directory%\\..\\Lhr.Mvc\\DiLibraries\""
+  }
+}
