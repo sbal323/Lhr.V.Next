@@ -37,5 +37,10 @@ namespace Lhr.Bl.Base
         {
             throw new NotImplementedException();
         }
+
+        public List<Employee> GetEmployees(Types.Base.FilterValue fValue)
+        {
+            return DalEmployee.GetEmployees();
+        }
     }
 }

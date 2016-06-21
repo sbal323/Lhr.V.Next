@@ -11,5 +11,6 @@ namespace Lhr.Dal
         Employee Get(int id);
         Employee GetByDepartment(int departmentId);
         Employee GetByCountry(int countryId);
+        List<Employee> GetEmployees();
     }
 }

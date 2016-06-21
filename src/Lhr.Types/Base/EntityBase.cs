@@ -6,12 +6,15 @@ using System.Text;
 using System.Reflection;
 using Lhr.Types.Orm;
 using Lhr.Types.Constants.Entities;
+using Newtonsoft.Json;
 
 namespace Lhr.Types.Base
 {
     /// <summary>
     /// Base class for Entity objects
     /// </summary>
+
+    [JsonConverter(typeof(CustomFieldsJsonConverter))]
     public class EntityBase
     {
         /// <summary>
@@ -42,10 +45,12 @@ namespace Lhr.Types.Base
         /// <summary>
         /// List of Custom fields values
         /// </summary>
-        public List<LhrFieldValue> CustomFieldsValues { get; }
+        [JsonIgnore]
+        public List<LhrFieldValue> CustomFieldsValues { get; set; }
         /// <summary>
         /// List of All fields values
         /// </summary>
+        [JsonIgnore]
         public List<LhrFieldValue> AllFieldValues
         {
             get
@@ -66,7 +71,7 @@ namespace Lhr.Types.Base
                     };
                     res.Add(stdField);
                 }
-                return res.OrderBy(x => x.FieldName).ToList() ;
+                return res.OrderBy(x => x.FieldName).ToList();
             }
         }
         /// <summary>
@@ -115,9 +120,9 @@ namespace Lhr.Types.Base
         /// <returns></returns>
         public LhrFieldValue GetFieldValue(string fieldName)
         {
-            LhrFieldValue res; 
+            LhrFieldValue res;
             res = this.AllFieldValues.Where(x => x.FieldName == fieldName).FirstOrDefault();
-            if(null == res)
+            if (null == res)
                 res = new LhrFieldValue();
             return res;
         }

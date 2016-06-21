@@ -37,7 +37,11 @@
   },
 
   "frameworks": {
-    "dnx46": { }
+    "dnx46": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.DataAnnotations": "4.0.0.0"
+      }
+    }
 
   },
 

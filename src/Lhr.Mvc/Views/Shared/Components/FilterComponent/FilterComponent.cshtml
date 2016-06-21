@@ -1,0 +1,28 @@
+﻿@model Lhr.Mvc.Base.FilterUIModel
+<form class="form-inline ">
+    <div class="form-group">
+        <label asp-for="filterValue.SelectedCountry">Country</label>
+        <select asp-for="filterValue.SelectedCountry" asp-items="@(new SelectList(Model.filterData.Countries,"Key","Value"))" class="form-control"> </select>
+        </div>
+    <div class="form-group">
+        <label asp-for="filterValue.SelectedLocation ">Location</label>
+        <select asp-for="filterValue.SelectedLocation " asp-items="@(new SelectList(Model.filterData.Locations,"Key","Value"))" class="form-control"> </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="filterValue.SelectedOrgUnit ">Org Unit</label>
+        <select asp-for="filterValue.SelectedOrgUnit" asp-items="@(new SelectList(Model.filterData.OrgUnits,"Key","Value"))" class="form-control"> </select>
+    </div>
+                <input type="button" id="btnFilterSubmit" class="btn btn-primary" value="View" />
+                <script>
+                    function GetFilterValueQueryString() {
+                        var qStr = "";
+                        $.each($("[name*='filterValue']"), function () {
+                            //alert($(this).val());
+                            qStr = qStr + this.getAttribute("name") + "=" + $(this).val() + "&";
+                        })
+                        //alert(qStr);
+                        return qStr;
+                    }
+                </script>
+</form>
+

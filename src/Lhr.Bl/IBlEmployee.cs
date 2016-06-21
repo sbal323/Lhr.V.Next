@@ -10,6 +10,7 @@ namespace Lhr.Bl
     {
         Employee Get(int id);
         List<Employee> GetManagers(int employeeId);
+        List<Employee> GetEmployees(Types.Base.FilterValue fValue);
         Employee GetByDepartment(int departmentId);
         Employee GetByCountry(int countryId);
     }

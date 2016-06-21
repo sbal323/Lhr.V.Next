@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lhr.Types.Base;
+using Newtonsoft.Json;
 
 namespace Lhr.Types.CoreHr
 {
     /// <summary>
     /// Entiry representing Employee
     /// </summary>
+
     public class Employee: EntityBase
     {
         /// <summary>
@@ -27,5 +29,9 @@ namespace Lhr.Types.CoreHr
         public int JobRoleId { get; set; }
         public int CountryId { get; set; }
         public int LocationId { get; set; }
+        public Employee()
+        {
+
+        }
     }
 }
