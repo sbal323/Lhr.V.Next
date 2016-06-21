@@ -9,7 +9,8 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.OptionsModel;
 using Lhr.Types.System;
 using Lhr.Bl;
-
+using Lhr.Mvc.Filters;
+using Lhr.Mvc.Services.Session;
 
 namespace Lhr.Mvc.Controllers
 {
@@ -17,18 +18,20 @@ namespace Lhr.Mvc.Controllers
     {
         private IBlEmployee BLEmployee { get; set; }
         private AppSettings Settings { get; set; }
-        public HomeController(IOptions<AppSettings> settings, IBlEmployee blEmployee)
+        private ISessionService Session;
+        public HomeController(IOptions<AppSettings> settings, IBlEmployee blEmployee, ISessionService sessionService)
         {
             Settings = settings.Value;
             BLEmployee = blEmployee;
+            Session = sessionService;
         }
         public IActionResult Index()
         {
             var empl = BLEmployee.Get(0);
+            throw new Exception("This is unhandled exception");
             return View(empl);
-
+            
         }
-
         public IActionResult About()
         {
             ViewData["Title"] = $"Your application looking for views here: {Settings.PathToCoreViewsDirectory} and for addons here {Settings.AddonsFolderName}";

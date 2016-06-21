@@ -23,6 +23,7 @@ using Lhr.Types.System;
 using Lhr.Core;
 using Lhr.Mvc.Services.Core;
 using Lhr.Mvc.Services.Updates;
+using Lhr.Mvc.Services.Session;
 
 namespace Lhr.Mvc
 {
@@ -60,17 +61,21 @@ namespace Lhr.Mvc
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<ISessionService, SessionManager>();
 
             services.AddMvc(
                 options =>
                 {
                     // Add global filters
-                    options.Filters.Add(new Filters.ErrorHandlerFilter());
+                    options.Filters.Add(new Filters.LhrErrorLoggingAttribute(false, services.BuildServiceProvider().GetService <ISessionService>()));
                 });
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            // Adds a default in-memory implementation of IDistributedCache
+            services.AddCaching(); 
+            services.AddSession();
+            
 
             // Add options
             services.AddOptions();
@@ -153,6 +158,8 @@ namespace Lhr.Mvc
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseIdentity();
 
