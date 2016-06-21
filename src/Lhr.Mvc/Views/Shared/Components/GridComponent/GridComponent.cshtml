@@ -1,0 +1,63 @@
+﻿@model Lhr.Mvc.Base.GridPageModel 
+@{
+}
+
+<div id="filter" style="margin-bottom: 5px">
+    @await Component.InvokeAsync("FilterComponent", Model.Filter)
+</div> 
+<div id="grid"></div>
+<script>
+    $(document).ready(function() {
+        InitGrid();
+                });
+    function GetDataSourceURL() {
+        var baseURL = "@Model.DataSourceURL";
+        var fullURL = baseURL + "?" + GetFilterValueQueryString();
+        return fullURL;
+    }
+    function InitGrid(){
+        $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: GetDataSourceURL()
+                },
+                pageSize: 20,
+                serverPaging: false,
+                serverFiltering: false,
+                serverSorting: false
+            },
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            columnMenu: true,
+            columns: [
+                @Html.Raw(Model.ColumnsSchemaString)
+            ]
+
+        });
+    
+    }
+    function RefreshGrid() {
+        var grid = $("#grid").data("kendoGrid");
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: GetDataSourceURL()
+                    }
+                },
+                pageSize: 20,
+                serverPaging: false,
+                serverFiltering: false,
+                serverSorting: false
+            });
+            dataSource.read();
+            grid.setDataSource(dataSource);
+    }
+    $(document).ready(function () {
+        $("#btnFilterSubmit").click(function () {
+            RefreshGrid();
+
+           // grid.refresh()
+        });
+    });
+</script>

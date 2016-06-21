@@ -1,12 +1,15 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "Lhr.Types Class Library",
   "authors": [ "bal" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "frameworks": {
     "dnx46": { }
+  },
+  "dependencies": {
+    "Newtonsoft.Json": "8.0.3",
+    "System.ComponentModel.Annotations": "4.1.0-rc2-24027"
   }
 }
