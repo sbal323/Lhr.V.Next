@@ -11,10 +11,10 @@ using Lhr.Bl.Core;
 
 namespace Lhr.Core
 {
-    public class DiManager: IDiManager
+    public class CoreDiManager: IDiManager
     {
         IDalDi dal;
-        public DiManager(IDalDi dalDI)
+        public CoreDiManager(IDalDi dalDI)
         {
             dal = dalDI;
         }

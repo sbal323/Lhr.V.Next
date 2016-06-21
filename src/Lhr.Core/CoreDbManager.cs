@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace Lhr.Core
 {
-    public class DbManager: IDbManager
+    public class CoreDbManager: IDbManager
     {
         IDalDb dal;
-        public DbManager(IDalDb dalDB)
+        public CoreDbManager(IDalDb dalDB)
         {
             dal = dalDB;
         }

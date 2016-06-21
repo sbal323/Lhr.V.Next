@@ -17,15 +17,15 @@ namespace Lhr.Mvc.Custom.Controllers
             _settings = settings.Value;
         }
 
-        [Route("[controller]/[action]", Order = 0)]
-        public IActionResult About()
-        {
+        //[Route("[controller]/[action]", Order = 0)]
+        //public IActionResult About()
+        //{
 
-            ViewData["Message"] = "This is About from Custom STC controller!!!!!!!!!!!!!!</br>" + 
-                                    $"Your application looking for views here: {_settings.PathToCoreViewsDirectory} and for addons here {_settings.AddonsFolderName}";
+        //    ViewData["Message"] = "This is About from Custom STC controller!!!!!!!!!!!!!!</br>" + 
+        //                            $"Your application looking for views here: {_settings.PathToCoreViewsDirectory} and for addons here {_settings.AddonsFolderName}";
 
-            return View();
-        }
+        //    return View();
+        //}
         [Route("[controller]/[action]", Order = 0)]
         public IActionResult Contact()
         {

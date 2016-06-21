@@ -7,7 +7,7 @@ namespace Lhr.Types.Constants
 {
     public static class TableNames
     {
-        public const string DISettings = "DiSettings";
+        public const string DiSettings = "DiSettings";
         public const string GeneralSettings = "GeneralSettings";
     }
 }
