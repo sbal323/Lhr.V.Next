@@ -28,7 +28,7 @@ namespace Lhr.Mvc.Controllers
         public IActionResult Index()
         {
             var empl = BLEmployee.Get(0);
-            throw new Exception("This is unhandled exception");
+            //throw new Exception("This is unhandled exception");
             return View(empl);
             
         }
