@@ -29,7 +29,7 @@ namespace Lhr.Mvc.Controllers
         public IActionResult Index()
         {
             var empl = BLEmployee.Get(0);
-            throw new Exception("This is unhandled exception");
+           // throw new Exception("This is unhandled exception");
             return View(empl);
             
         }
@@ -47,10 +47,16 @@ namespace Lhr.Mvc.Controllers
         }
         public IActionResult SampleGrid()
         {
-            Base.GridPageModel gp = new Base.GridPageModel();
+            Base.Models.GridPageModel gp = new Base.Models.GridPageModel();
             gp.PageTitle = "SET Page Title";
             gp.DataSourceURL = "/Home/GetEmployees";
             return View(gp);
+
+        }
+        public IActionResult Template()
+        {
+
+            return View();
 
         }
 

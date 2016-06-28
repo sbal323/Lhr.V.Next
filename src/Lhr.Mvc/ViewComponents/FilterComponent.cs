@@ -8,12 +8,12 @@ namespace Lhr.Mvc.ViewComponents
 {
     public class FilterComponent : ViewComponent 
     {
-        public IViewComponentResult Invoke(Base.FilterUIModel fm)
+        public IViewComponentResult Invoke(Base.Models.FilterUIModel fm)
         {
             FillFilterData(ref fm);
             return View("FilterComponent", fm);
         }
-        private void FillFilterData(ref Base.FilterUIModel fm)
+        private void FillFilterData(ref Base.Models.FilterUIModel fm)
         {
             fm.filterData = new Types.Base.FilterData();
             fm.filterData.Countries.Add(1, "USA");

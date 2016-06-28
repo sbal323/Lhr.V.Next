@@ -8,7 +8,7 @@ namespace Lhr.Mvc.ViewComponents
 {
     public class GridComponent : ViewComponent 
     {
-        public IViewComponentResult Invoke(Base.GridPageModel gp)
+        public IViewComponentResult Invoke(Base.Models.GridPageModel gp)
         {
             return View("GridComponent",gp);
         }

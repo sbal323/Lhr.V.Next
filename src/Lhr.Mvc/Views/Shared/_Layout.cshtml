@@ -6,12 +6,28 @@
         <title>@ViewData["Title"] - LHR.MVC</title>
 
         <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/template/global/css/bootstrap.css"  >
+            <link rel="stylesheet" href="~/template/global/css/bootstrap-extend.min.css">
+            <link rel="stylesheet" href="~/template/base/assets/css/site.css"  />
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.common.min.css" />
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.default.min.css" />
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.default.mobile.min.css" />
-
+            <!-- Fonts -->
+            <link rel="stylesheet" href="~/template/global/fonts/weather-icons/weather-icons.css">
+            <link rel="stylesheet" href="~/template/global/fonts/web-icons/web-icons.min.css">
+            <link rel="stylesheet" href="~/template/global/fonts/brand-icons/brand-icons.min.css">
+            <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+            <!-- Plugins -->
+            <link rel="stylesheet" href="~/template/global/vendor/animsition/animsition.css">
+            <link rel="stylesheet" href="~/template/global/vendor/asscrollable/asScrollable.css">
+            <link rel="stylesheet" href="~/template/global/vendor/switchery/switchery.css">
+            <link rel="stylesheet" href="~/template/global/vendor/intro-js/introjs.css">
+            <link rel="stylesheet" href="~/template/global/vendor/slidepanel/slidePanel.css">
+            <link rel="stylesheet" href="~/template/global/vendor/flag-icon-css/flag-icon.css">
+            <link rel="stylesheet" href="~/template/global/vendor/chartist-js/chartist.css">
+            <link rel="stylesheet" href="~/template/global/vendor/jvectormap/jquery-jvectormap.css">
+            <link rel="stylesheet" href="~/template/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+            <link rel="stylesheet" href="~/template/base/assets/examples/css/dashboard/v1.css">
         </environment>
         <environment names="Staging,Production">
             <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -21,12 +37,20 @@
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.common.min.css" />
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.default.min.css" />
             <link rel="stylesheet" href="~/css/kendo/2016.2.504/kendo.default.mobile.min.css" />
+            <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
         </environment>
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="~/js/kendo/2016.2.504/kendo.all.min.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
+
+            <script src="~/template/global/vendor/modernizr/modernizr.js"></script>
+            <script src="~/template/global/vendor/breakpoints/breakpoints.js"></script>
+            <script>
+                Breakpoints();
+            </script>
+           
+
         </environment>
         <environment names="Staging,Production">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -43,39 +67,62 @@
         </environment>
 
         @RenderSection("scripts", required: false)
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">LHR.MVC</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-controller="Home" asp-action="SampleGrid">Sample Grid</a></li>
-                </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                    
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2016 - LHR.MVC</p>
-            </footer>
-        </div>
 
-        
-    </body>
+    </head>
+    <body class="dashboard">
+        @await Component.InvokeAsync("TopBarComponent")
+            @await Component.InvokeAsync("MenuComponent")
+
+
+        <div class="page animsition">
+            <div class="page-content padding-30 container-fluid">
+                @RenderBody()
+                </div>
+                <footer>
+                    <p>&copy; 2016 - LHR.MVC</p>
+                </footer>
+            </div>
+
+        <environment names="Development">
+
+            <script src="~/template/global/vendor/animsition/animsition.js"></script>
+            <script src="~/template/global/vendor/asscroll/jquery-asScroll.js"></script>
+            <script src="~/template/global/vendor/mousewheel/jquery.mousewheel.js"></script>
+            <script src="~/template/global/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+            <script src="~/template/global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+            <!-- Plugins -->
+            <script src="~/template/global/vendor/switchery/switchery.min.js"></script>
+            <script src="~/template/global/vendor/intro-js/intro.js"></script>
+            <script src="~/template/global/vendor/screenfull/screenfull.js"></script>
+            <script src="~/template/global/vendor/slidepanel/jquery-slidePanel.js"></script>
+            <script src="~/template/global/vendor/skycons/skycons.js"></script>
+            <script src="~/template/global/vendor/chartist-js/chartist.min.js"></script>
+            <script src="~/template/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
+            <script src="~/template/global/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
+            <script src="~/template/global/vendor/jvectormap/jquery.jvectormap.min.js"></script>
+            <script src="~/template/global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
+            <script src="~/template/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+            <!-- Scripts -->
+            <script src="~/template/global/js/core.js"></script>
+            <script src="~/template/base/assets/js/site.js"></script>
+            <script src="~/template/base/assets/js/sections/menu.js"></script>
+            <script src="~/template/base/assets/js/sections/menubar.js"></script>
+            <script src="~/template/base/assets/js/sections/gridmenu.js"></script>
+            <script src="~/template/base/assets/js/sections/sidebar.js"></script>
+            <script src="~/template/global/js/configs/config-colors.js"></script>
+            <script src="~/template/assets/js/configs/config-tour.js"></script>
+            <script src="~/template/global/js/components/asscrollable.js"></script>
+            <script src="~/template/global/js/components/animsition.js"></script>
+            <script src="~/template/global/js/components/slidepanel.js"></script>
+            <script src="~/template/global/js/components/switchery.js"></script>
+            <script src="~/template/global/js/components/matchheight.js"></script>
+            <script src="~/template/global/js/components/jvectormap.js"></script>
+            <script src="~/template/base/assets/examples/js/dashboard/v1.js"></script>
+            </environment>
+            <script>
+                $(document).ready(function ($) {
+                    Site.run();
+                })
+            </script>
+</body>
 </html>

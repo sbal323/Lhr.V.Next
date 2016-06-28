@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lhr.Mvc.Base
+namespace Lhr.Mvc.Base.Models
 {
     public class GridPageModel : PageModel 
     {
@@ -33,7 +33,7 @@ namespace Lhr.Mvc.Base
         }
         public GridPageModel()
         {
-            Filter = new Base.FilterUIModel();
+            Filter = new Base.Models.FilterUIModel();
             View = new Types.Base.LhrView();
         }
 
