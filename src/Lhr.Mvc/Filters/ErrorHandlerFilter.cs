@@ -42,7 +42,7 @@ namespace Lhr.Mvc.Filters
             {
                 context.Result = new ViewResult
                 {
-                    ViewName = "Error"
+                    ViewName = "Error"                    
                 };
             }
         }
