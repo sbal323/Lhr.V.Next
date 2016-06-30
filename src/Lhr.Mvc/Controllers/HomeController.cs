@@ -48,7 +48,7 @@ namespace Lhr.Mvc.Controllers
         public IActionResult SampleGrid()
         {
             Base.Models.GridPageModel gp = new Base.Models.GridPageModel();
-            gp.PageTitle = "SET Page Title";
+            gp.PageTitle = "Employees";
             gp.DataSourceURL = "/Home/GetEmployees";
             return View(gp);
 
